@@ -1,4 +1,4 @@
-onst largestComponent = (graph) => {
+const largestComponent = (graph) => {
   const visited = new Set();
   let max = 0;
   
