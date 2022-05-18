@@ -15,3 +15,15 @@ const dft = (graph, src) => {
        dft(graph, neighbor)
    }
 }
+
+const bft = (graph, src) => {
+    const queue = [ src ];
+
+    while (queue.length > 0){
+        const current = queue.shift();
+
+        for ( let neighbor of graph[current]){
+            queue.push(current)
+        }
+    }
+}
