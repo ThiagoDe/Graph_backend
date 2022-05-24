@@ -1,15 +1,22 @@
 const longestPath = (graph) => {
-  let max = 0;
+  let distance = {};
   for (let node in graph){
-    max = Math.max(max, explore(graph, node))
+    if (graph[node].length === 0) distance[node] = 0;
   }
-  return max;
+  
+  for (let node in graph){
+    explore(graph, node, distance);
+  }
+  
+  return Math.max(...Object.values(distance))
 }
-const explore = (graph, node) => {
-  if (graph[node].length === 0) return 1;
-  let edges = 0;
+
+const explore = (graph, node, distance) => {
+  if (node in distance) return distance[node];
+  let max = 0;
   for (let neighbor of graph[node]){
-    edges += explore(graph, neighbor);
+    max = Math.max(explore(graph, neighbor, distance), max)
   }
-  return edges;
+  distance[node] = 1 + max;
+  return distance[node];
 }
