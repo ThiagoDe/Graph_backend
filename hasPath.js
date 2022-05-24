@@ -5,7 +5,6 @@ const hasPath = (graph, src, dst) => {
   }
   return false;
 }
-
 const hasPath2 = (graph, src, dst) => {
   const queue = [ src ]
   
